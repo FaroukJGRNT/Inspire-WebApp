@@ -1,0 +1,41 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}
+    Inspire - Home
+{% endblock %}
+
+{%load crispy_forms_tags%}
+
+{% block content %}
+    <h1 style="color: greenyellow;">Welcome to Inspire</h1>
+    <p>There lie the wonderful ideas of million different minds.<br>Feel free to comment and add yours.</p>
+    {%for idea in ideas%}
+        <h2 style="color: greenyellow;">{{idea.title}}</h1>
+        <h6>By <b>{{idea.user}}</b> at {{idea.created_at}}</h6>
+        <br>
+        <h5>{{idea.content}}</h5>
+        <br>
+        <h3>Comments</h3>
+        <form method="POST">
+            {%csrf_token%}
+            <input type="text", name="comment_text", placeholder="Write your comment here">
+            <input type="hidden", value="{{idea.id}}", name="idea_id">
+            <a href="/">
+            <button class="btn btn-success">
+                Submit
+            </button>
+            </a>
+        </form>
+        <br>
+        {% if idea.comments.count %}
+            {% for comment in idea.comments.all %}
+                <h5>By <b>{{comment.user}}</b> at {{comment.created_at}}</h5>
+                <p>{{comment.content}}</p>
+                <br>
+            {%endfor%}
+        {%else%}
+            <h5>No comment on this idea.<br> Leave the first one !</h5>
+        {%endif%}
+        <br>
+    {%endfor%}
+{% endblock %}

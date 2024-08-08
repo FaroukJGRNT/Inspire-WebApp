@@ -1,0 +1,22 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}
+    Inspire - New Idea
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1 style="color: yellowgreen;">New Idea</h1>
+    <br>
+    <h5>Share your thoughts and ideas, inspire others.</h5>
+    <br>
+    <br>
+    <form method="POST", class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <a href="/">
+            <button class="btn btn-success">Post your idea</button>
+        </a>
+    </form>
+{%endblock%}

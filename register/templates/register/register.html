@@ -1,0 +1,16 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}
+    Inspire - Register
+{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form class="form-group", method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <a href="">
+        <button type="submit", class="btn btn-success">Register Now</button>
+        </a>
+    </form>    
+{% endblock %}
