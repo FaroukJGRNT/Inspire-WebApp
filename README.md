@@ -16,8 +16,14 @@ Avant de lancer l'application, assure-toi d'avoir installé :
 
 ## 📦 Installation
 
-1. **Clone le dépôt** :
+### Crée un environnnemnt virtuel (Recommandé)
+python -m virtualenv venv
 
-```bash
-git clone https://github.com/ton-utilisateur/inspire.git
-cd inspire
+### Active ton environnnement virtuel
+source venv/bin/activate
+
+### Tu peux maintenant installer les dépendances de manière isolée
+pip install -r requirements.txt
+
+### Lance le serveur
+python manage.py runserver
