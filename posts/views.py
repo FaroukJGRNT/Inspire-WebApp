@@ -5,6 +5,9 @@ import datetime
 
 
 def home(response):
+    if (response.user.is_authenticated == False):
+        return redirect('/login')
+
     ideas = Idea.objects.all()
 
     if response.method == 'POST':
